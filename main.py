@@ -1,18 +1,18 @@
 import sys
-from random import randint
+from random import randrange
 
 from PyQt5.QtWidgets import QMainWindow, QApplication
 from PyQt5.QtGui import QPainter, QColor
 
-from PyQt5 import uic
+from UI import Ui_MainWindow
 
 
-class MainWindow(QMainWindow):
+class MainWindow(QMainWindow, Ui_MainWindow):
     def __init__(self):
         QMainWindow.__init__(self)
-        uic.loadUi('UI.ui', self)
         self.flag = False
 
+        self.setupUi(self)
         self.setup_program()
 
     def setup_program(self):
@@ -20,11 +20,11 @@ class MainWindow(QMainWindow):
 
     def paintEvent(self, event):
         if self.flag:
-            size = randint(20, 150)
+            size = randrange(20, 150)
 
             qp = QPainter()
             qp.begin(self)
-            qp.setBrush(QColor(255, 255, 0))
+            qp.setBrush(QColor(randrange(256), randrange(256), randrange(256)))
             qp.drawEllipse(140, 170, size, size)
             qp.end()
 
