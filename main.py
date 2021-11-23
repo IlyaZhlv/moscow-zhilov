@@ -11,7 +11,6 @@ class MainWindow(QMainWindow):
     def __init__(self):
         QMainWindow.__init__(self)
         uic.loadUi('UI.ui', self)
-
         self.flag = False
 
         self.setup_program()
